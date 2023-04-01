@@ -1,0 +1,27 @@
+mokytoja
+
+mongodb+srv://mokytoja:<password>@cluster0.dduf9nc.mongodb.net/?retryWrites=true&w=majority
+
+WltAJUQA09Ewu9rD
+
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL).then(console.log("Connected to MongoDB"));
+
+app.get("/", (req, res) => {
+    res.status(200).send("Testuojame GET metodą");
+});
+
+app.post("/", (req, res) => {
+    res.status(201).send("Testuojame POST metodą");
+});
+
+
+const port = 3005;
+app.listen(port, () => {
+  console.log(`Back-end is running on port ${port}`);
+});
